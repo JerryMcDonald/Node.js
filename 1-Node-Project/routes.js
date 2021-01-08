@@ -22,7 +22,7 @@ const requestHandler = (req, res) => {
 
     return req.on('end', () => {
       const parsedBody = Buffer.concat(body).toString();
-      const message = parsedBody.split('=')[1];
+      const message = parsedBody.split('=')[0];
       console.log(message);
       fs.writeFile('message.txt', message, (error) => {
         res.statusCode = 302;
@@ -31,6 +31,7 @@ const requestHandler = (req, res) => {
       });
     });
   }
+
 
   res.setHeader('Content-Type', 'text/html');
   res.write('<html>');
