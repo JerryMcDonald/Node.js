@@ -11,7 +11,13 @@ const products = [];
 // /admin/add-product => GET
 router.get('/add-product', (req, res, next) => {
   // the default res header is text/html
-  res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
+  res.render('add-product', {
+    pageTitle: 'Add Product',
+    path: '/admin/add-product',
+    formsCSS: true,
+    productCSS: true,
+    activeAddProduct: true
+  });
 });
 
 // /admin/add-product => POST
